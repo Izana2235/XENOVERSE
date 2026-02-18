@@ -33,11 +33,83 @@ body {
     justify-content: space-between;
     padding: 0 20px;
     box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+    gap: 16px;
+}
+
+.header .material-icons-outlined {
+    font-size: 28px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex: 1;
+    min-width: 0;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-right .material-icons-outlined {
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 10px;
+}
+
+.header-right .material-icons-outlined:hover {
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .menu-icon {
-    display: none;
+    display: block;
     cursor: pointer;
+}
+
+.menu-icon .material-icons-outlined {
+    font-size: 30px;
+}
+
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 560px;
+    padding: 10px 12px;
+    border-radius: 12px;
+    background: #263043;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    min-width: 0;
+}
+
+.search-container:focus-within {
+    border-color: rgba(41, 98, 255, 0.6);
+    box-shadow: 0 0 0 3px rgba(41, 98, 255, 0.18);
+}
+
+.search-icon {
+    font-size: 22px !important;
+    opacity: 0.9;
+    pointer-events: none;
+}
+
+.search-container input {
+    width: 100%;
+    min-width: 0;
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: #e8eaed;
+    font-family: "Montserrat", sans-serif;
+    font-size: 15px;
+}
+
+.search-container input::placeholder {
+    color: rgba(232, 234, 237, 0.55);
 }
 
 /* ---------------- SIDEBAR ---------------- */
@@ -47,6 +119,18 @@ body {
     background-color: #263043;
     overflow-y: auto;
     transition: transform 0.3s ease;
+    transform: translateX(0);
+}
+
+/* Desktop sidebar collapse */
+@media screen and (min-width: 601px) {
+    .grid-container.sidebar-collapsed {
+        grid-template-columns: 0fr 1fr;
+    }
+
+    .grid-container.sidebar-collapsed #sidebar {
+        transform: translateX(-260px);
+    }
 }
 
 .sidebar-title {
@@ -256,14 +340,27 @@ body {
     .grid-container {
         grid-template-columns: 0fr 1fr;
     }
+    .header {
+        padding: 0 12px;
+    }
+    .search-container {
+        width: auto;
+        max-width: none;
+        padding: 8px 10px;
+    }
+    .search-container input {
+        display: none;
+    }
     #sidebar {
         position: fixed;
         width: 250px;
         top: 0;
-        left: -260px;
+        left: 0;
         height: 100%;
         z-index: 1000;
-        transform: translateX(-100%);
+        transform: translateX(-110%);
+        will-change: transform;
+        box-shadow: 8px 0 24px rgba(0, 0, 0, 0.35);
     }
     #sidebar.active {
         transform: translateX(0);

@@ -14,11 +14,15 @@
         
         <!-- HEADER -->
         <header class="header">
-            <div class="menu-icon" onclick="openSidebar()">
-                <span class="material-icons-outlined">menu</span>
-            </div>
             <div class="header-left">
-                <span class="material-icons-outlined">search</span>
+                <div class="menu-icon" onclick="openSidebar()" aria-label="Open sidebar" role="button" tabindex="0">
+                    <span class="material-icons-outlined">menu</span>
+                </div>
+
+                <div class="search-container" role="search">
+                    <span class="material-icons-outlined search-icon">search</span>
+                    <input id="header-search" type="search" placeholder="Search…" autocomplete="off" />
+                </div>
             </div>
             <div class="header-right">
                 <span class="material-icons-outlined">notifications</span>

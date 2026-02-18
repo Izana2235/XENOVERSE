@@ -1,10 +1,26 @@
 // Sidebar functions
 function openSidebar() {
-    document.getElementById("sidebar").classList.add("active");
+    const sidebar = document.getElementById("sidebar");
+    const grid = document.querySelector(".grid-container");
+
+    if (sidebar) {
+        sidebar.classList.add("active");
+    }
+    if (grid && window.innerWidth > 600) {
+        grid.classList.remove("sidebar-collapsed");
+    }
 }
 
 function closeSidebar() {
-    document.getElementById("sidebar").classList.remove("active");
+    const sidebar = document.getElementById("sidebar");
+    const grid = document.querySelector(".grid-container");
+
+    if (sidebar) {
+        sidebar.classList.remove("active");
+    }
+    if (grid && window.innerWidth > 600) {
+        grid.classList.add("sidebar-collapsed");
+    }
 }
 
 // Toggle submenu expand/collapse
@@ -83,4 +99,16 @@ document.addEventListener('click', function(event) {
 // Initialize - ensure dashboard is shown on load
 document.addEventListener('DOMContentLoaded', function() {
     switchTab('dashboard');
+
+    // Start with sidebar open on desktop, collapsed on mobile
+    const grid = document.querySelector(".grid-container");
+    const sidebar = document.getElementById("sidebar");
+    if (window.innerWidth > 600) {
+        if (grid) {
+            grid.classList.remove("sidebar-collapsed");
+        }
+        if (sidebar) {
+            sidebar.classList.add("active");
+        }
+    }
 });
