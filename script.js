@@ -140,8 +140,7 @@ function toggleSubmenu(element) {
     const isExpanded = listItem.classList.contains('expanded');
     
     if (!isExpanded) {
-        // Expanding
-        closeAllSubmenus();
+        // Expanding - allow multiple submenus to be open
         listItem.classList.add('expanded');
         expandIcon.style.transform = 'rotate(90deg)';
         
